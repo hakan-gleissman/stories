@@ -265,3 +265,9 @@ main.startsida {
   margin-bottom: 0;
   font-style: italic;
 }
+
+@media (max-width: 600px) {
+  footer {
+    font-size: 17px;
+  }
+}
