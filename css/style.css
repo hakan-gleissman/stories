@@ -1,50 +1,175 @@
+/* Grundlayout */
+:root {
+  --header-height: 60px;
+  --footer-height: 60px;
+  --ink: #3d2b18;
+  --parchment: #efdfb7;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  background-image: url("../media/pergament.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  min-height: 100dvh;
+  padding-bottom: var(--footer-height);
+
+  background: url("../media/pergament.jpg") center / cover no-repeat;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
 }
 
+/* Typsnitt */
 .old-standard-tt-regular {
   font-family: "Old Standard TT", serif;
+  font-size: 25px;
   font-weight: 400;
   font-style: normal;
-  font-size: 25px;
 }
 
 .old-standard-tt-regular-greek {
-  font-family: "Old Standard TT", serif;
+  font-family: "Noto Sans Cypriot", "Old Standard TT", serif;
   font-weight: 400;
   font-style: normal;
 }
 
-a {
-  color: #efdfb7;
-  text-decoration: none;
-}
-
+/* Länkar */
+a,
 a:visited {
-  color: #efdfb7;
+  color: var(--parchment);
+  text-decoration: none;
 }
 
 a:hover {
   color: #c5a46b;
 }
 
-.pergament-knapp {
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  height: var(--header-height);
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #796342;
+  color: #ded2b8;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+}
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: var(--footer-height);
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #796342, #604c32);
+  color: #fff4dc;
+  border-top: 2px solid #a38654;
+  box-shadow: 0 -3px 10px rgb(0 0 0 / 25%);
+
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* Sidinnehåll */
+main {
+  padding: 24px;
+}
+
+/* Centrerar hero mellan header och footer */
+main.startsida {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+  padding: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero */
+.hero {
+  width: 100%;
+  max-width: 1000px;
+  min-height: 300px;
+  padding: 32px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(rgb(25 18 10 / 40%), rgb(25 18 10 / 75%)),
+    url("https://blog.tcea.org/wp-content/uploads/2018/11/narrative-794978_1920-1170x658.jpg")
+      center / cover no-repeat;
+
+  border: 2px solid #a38654;
+  border-radius: 5px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 650px;
+  color: var(--parchment);
+}
+
+.hero-text h1 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 6vw, 48px);
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 60%);
+}
+
+.hero-text p {
+  margin: 0 0 28px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Pergamentknappar */
+.pergament-knapp,
+.pergament-knapp:visited {
+  display: inline-block;
   padding: 8px 18px;
+
   border: 2px solid #695031;
   border-radius: 5px;
-
   background: linear-gradient(135deg, #efdfb7, #c5a46b);
-  color: #3d2b18;
+  color: var(--ink);
 
   font-family: Georgia, "Times New Roman", serif;
   font-size: 14px;
   font-weight: bold;
+  line-height: 1.4;
   letter-spacing: 0.5px;
+  text-decoration: none;
 
   box-shadow:
     inset 0 0 12px rgb(105 80 49 / 25%),
@@ -58,6 +183,7 @@ a:hover {
 }
 
 .pergament-knapp:hover {
+  color: var(--ink);
   filter: brightness(1.08);
   transform: translateY(-2px);
 }
@@ -66,72 +192,15 @@ a:hover {
   transform: translateY(1px);
 }
 
-.pergament-knapp:focus-visible {
-  outline: 3px solid #3d2b18;
-  outline-offset: 4px;
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  height: 60px;
-  box-sizing: border-box;
-
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-
-  /* Mörk pergamentton */
-  background-color: #796342;
-  color: #ded2b8;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
-}
-
-body {
-  margin: 0;
-  padding-bottom: 60px;
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-
-  width: 100%;
-  height: 60px;
-  box-sizing: border-box;
-  padding: 0 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: linear-gradient(135deg, #796342, #604c32);
-  color: #fff4dc;
-  border-top: 2px solid #a38654;
-  box-shadow: 0 -3px 10px rgb(0 0 0 / 25%);
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-}
-
-main {
-  padding: 24px;
-  min-height: 150vh;
-}
-
+/* Berättelser */
 .pergament-text {
-  box-sizing: border-box;
-  width: calc(100% - 32px);
+  width: 100%;
   max-width: 720px;
   margin: 40px auto;
   padding: clamp(24px, 5vw, 48px);
 
   background: linear-gradient(135deg, #efdfb7, #d8bd89);
-  color: #3d2b18;
+  color: var(--ink);
   border: 2px solid #695031;
   border-radius: 5px;
 
@@ -140,7 +209,6 @@ main {
     inset 0 0 0 5px rgb(255 244 213 / 30%),
     0 8px 24px rgb(0 0 0 / 25%);
 
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 15px;
   line-height: 1.7;
 }
