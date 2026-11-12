@@ -20,6 +20,19 @@ body {
   font-style: normal;
 }
 
+a {
+  color: #efdfb7;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #efdfb7;
+}
+
+a:hover {
+  color: #c5a46b;
+}
+
 .pergament-knapp {
   padding: 8px 18px;
   border: 2px solid #695031;
