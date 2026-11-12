@@ -101,39 +101,49 @@ main {
   padding: 24px;
 }
 
-/* Centrerar hero mellan header och footer */
+/* Centrering mellan header och footer */
 main.startsida {
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
   min-height: calc(100dvh - var(--header-height) - var(--footer-height));
-  padding: 24px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Hero */
+/* Gemensam hero för båda sidorna */
 .hero {
+  --hero-image: url("https://blog.tcea.org/wp-content/uploads/2018/11/narrative-794978_1920-1170x658.jpg");
+
   width: 100%;
   max-width: 1400px;
   min-height: 75vh;
   min-height: 75dvh;
+  margin: 0;
   padding: 32px 24px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background:
-    linear-gradient(rgb(25 18 10 / 40%), rgb(25 18 10 / 75%)),
-    url("https://blog.tcea.org/wp-content/uploads/2018/11/narrative-794978_1920-1170x658.jpg")
-      center / cover no-repeat;
+  background-image:
+    linear-gradient(rgb(25 18 10 / 40%), rgb(25 18 10 / 75%)), var(--hero-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   border: 2px solid #a38654;
   border-radius: 5px;
   box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
 
   text-align: center;
+}
+
+/* Grekiska sidan: samma mått, annan bild */
+.hero-grekland {
+  --hero-image: url("https://res.cloudinary.com/aenetworks/image/upload/c_fill,w_1920,h_1080,g_auto/f_auto/q_auto/v1/Greek-mythology-gettyImages-1220052224");
+
+  background-position: center 5%;
 }
 
 .hero-text {
@@ -196,7 +206,7 @@ main.startsida {
 /* Berättelser */
 .pergament-text {
   width: 100%;
-  max-width: 720px;
+  max-width: 1100px;
   margin: 40px auto;
   padding: clamp(24px, 5vw, 48px);
 
@@ -210,7 +220,7 @@ main.startsida {
     inset 0 0 0 5px rgb(255 244 213 / 30%),
     0 8px 24px rgb(0 0 0 / 25%);
 
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.7;
 }
 
